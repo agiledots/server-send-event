@@ -1,0 +1,19 @@
+{
+  "name": "server-send-events",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon --inspect src/index.js"
+  },
+  "keywords": [],
+  "author": "dotuian <agiledots@gmail.com> (https://github.com/agiledots)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

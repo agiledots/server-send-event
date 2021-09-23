@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <title> </title>
+</head>
+
+<body>
+
+  <h1>Server Send Event</h1>
+
+  <ul id="list"></ul>
+
+  <script>
+    var evtSource = new EventSource("/sse");
+    var eventList = document.getElementById('list');
+
+    evtSource.onmessage = function (e) {
+      console.log("onmessage: ", e);
+
+      var newElement = document.createElement("li");
+
+      newElement.innerHTML = "message: " + e.data;
+      eventList.appendChild(newElement);
+    }
+
+    evtSource.onerror = function (e) {
+      alert("EventSource failed.");
+    };
+
+    evtSource.addEventListener("ping", function (e) {
+      console.log("ping: ", e);
+
+      var newElement = document.createElement("li");
+
+      var obj = JSON.parse(e.data);
+      newElement.innerHTML = "ping at " + obj.time;
+      eventList.appendChild(newElement);
+    }, false);
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>
